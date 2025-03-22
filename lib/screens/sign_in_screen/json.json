@@ -1,0 +1,8 @@
+{
+    "success": true,
+    "statusCode": 200,
+    "code": "jwt_auth_valid_credential",
+    "message":"Credential is valid",
+    "data":{"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2NsaWNrY2FydC53cHJkeC5jb20vZGVtbyIsImlhdCI6MTczMTY0Nzc4NywibmJmIjoxNzMxNjQ3Nzg3LCJleHAiOjE3MzE2NDgzODcsImRhdGEiOnsidXNlciI6eyJpZCI6MTEsImRldmljZSI6IiIsInBhc3MiOiJkZGVmNWU1NTdlYjQ1ZjBkMjE5MGI0MjQ1MzBiNjlkZCJ9fX0.BSUKJcPXH3nkzKYW7Jb5k4OHpyd94kB85AxWnWGjtaY","id":11,"email":"test@gmail.com","nicename":"test","firstName":"test","lastName": "test", "displayName": "test test"
+}
+}
