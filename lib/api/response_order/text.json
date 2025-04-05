@@ -1,0 +1,291 @@
+[
+    {
+        "id": 149,
+        "name": "Forest Green Dining Chair",
+        "slug": "forest-green-dining-chair",
+        "permalink": "https:\/\/clickcart.wprdx.com\/demo\/product\/forest-green-dining-chair\/",
+        "date_created": "2024-10-24T05:40:17",
+        "date_created_gmt": "2024-10-24T05:40:17",
+        "date_modified": "2024-11-05T09:04:00",
+        "date_modified_gmt": "2024-11-05T09:04:00",
+        "type": "simple",
+        "status": "publish",
+        "featured": false,
+        "catalog_visibility": "visible",
+        "description": "<p>Elevate your dining experience with this sophisticated green dining chair. The chair's sleek design features a curved backrest and plush velvet upholstery in a rich forest hue. The natural wood legs add a touch of warmth and complement the chair's elegant silhouette. Perfect for both modern and traditional dining rooms, this chair offers a comfortable and stylish seating option that will elevate your home decor.<\/p>\n",
+        "short_description": "<p>Elevate your dining experience with this sophisticated green dining chair. The chair&#8217;s sleek design features a curved backrest and plush velvet upholstery in a rich forest hue. The natural wood legs add a touch of warmth and complement the chair&#8217;s elegant silhouette. Perfect for both modern and traditional dining rooms, this chair offers a comfortable and stylish seating option that will elevate your home decor.<\/p>\n",
+        "sku": "",
+        "price": "65",
+        "regular_price": "71",
+        "sale_price": "65",
+        "date_on_sale_from": null,
+        "date_on_sale_from_gmt": null,
+        "date_on_sale_to": null,
+        "date_on_sale_to_gmt": null,
+        "on_sale": true,
+        "purchasable": true,
+        "total_sales": 0,
+        "virtual": false,
+        "downloadable": false,
+        "downloads": [],
+        "download_limit": -1,
+        "download_expiry": -1,
+        "external_url": "",
+        "button_text": "",
+        "tax_status": "taxable",
+        "tax_class": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "backorders": "no",
+        "backorders_allowed": false,
+        "backordered": false,
+        "low_stock_amount": null,
+        "sold_individually": false,
+        "weight": "",
+        "dimensions": {
+            "length": "",
+            "width": "",
+            "height": ""
+        },
+        "shipping_required": true,
+        "shipping_taxable": true,
+        "shipping_class": "",
+        "shipping_class_id": 0,
+        "reviews_allowed": true,
+        "average_rating": "4.50",
+        "rating_count": 2,
+        "upsell_ids": [],
+        "cross_sell_ids": [],
+        "parent_id": 0,
+        "purchase_note": "",
+        "categories": [
+            {
+                "id": 21,
+                "name": "Furnishings",
+                "slug": "furnishings"
+            }
+        ],
+        "tags": [
+            {
+                "id": 71,
+                "name": "Chair",
+                "slug": "chair"
+            }
+        ],
+        "images": [
+            {
+                "id": 145,
+                "date_created": "2024-10-24T05:24:04",
+                "date_created_gmt": "2024-10-24T05:24:04",
+                "date_modified": "2024-10-24T05:24:04",
+                "date_modified_gmt": "2024-10-24T05:24:04",
+                "src": "https:\/\/clickcart.wprdx.com\/demo\/wp-content\/uploads\/2024\/10\/pro5.png",
+                "name": "pro5",
+                "alt": ""
+            }
+        ],
+        "attributes": [
+            {
+                "id": 0,
+                "name": "Color",
+                "slug": "Color",
+                "position": 0,
+                "visible": true,
+                "variation": true,
+                "options": [
+                    "darkolivegreen;\nBlue."
+                ]
+            },
+            {
+                "id": 0,
+                "name": "size",
+                "slug": "size",
+                "position": 1,
+                "visible": true,
+                "variation": true,
+                "options": [
+                    "Medium;some"
+                ]
+            }
+        ],
+        "default_attributes": [],
+        "variations": [],
+        "grouped_products": [],
+        "menu_order": 0,
+        "price_html": "<del aria-hidden=\"true\"><span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&#36;<\/span>71.00<\/bdi><\/span><\/del> <span class=\"screen-reader-text\">Original price was: &#036;71.00.<\/span><ins aria-hidden=\"true\"><span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&#36;<\/span>65.00<\/bdi><\/span><\/ins><span class=\"screen-reader-text\">Current price is: &#036;65.00.<\/span>",
+        "related_ids": [
+            70,
+            140,
+            148,
+            146,
+            147
+        ],
+        "meta_data": [
+            {
+                "id": 868,
+                "key": "_children",
+                "value": [
+                    148,
+                    147
+                ]
+            }
+        ],
+        "stock_status": "instock",
+        "has_options": false,
+        "post_password": "",
+        "global_unique_id": "",
+        "_links": {
+            "self": [
+                {
+                    "href": "https:\/\/clickcart.wprdx.com\/demo\/wp-json\/wc\/v3\/products\/149"
+                }
+            ],
+            "collection": [
+                {
+                    "href": "https:\/\/clickcart.wprdx.com\/demo\/wp-json\/wc\/v3\/products"
+                }
+            ]
+        }
+    },
+    {
+        "id": 173,
+        "name": "Multiple Products In this Product",
+        "slug": "multiple-products-in-this-product",
+        "permalink": "https:\/\/clickcart.wprdx.com\/demo\/product\/multiple-products-in-this-product\/",
+        "date_created": "2024-12-04T07:19:52",
+        "date_created_gmt": "2024-12-04T07:19:52",
+        "date_modified": "2024-12-04T08:58:58",
+        "date_modified_gmt": "2024-12-04T08:58:58",
+        "type": "variable",
+        "status": "publish",
+        "featured": false,
+        "catalog_visibility": "visible",
+        "description": "<p>Perfect for travel and daily use<\/p>\n",
+        "short_description": "",
+        "sku": "",
+        "price": "8",
+        "regular_price": "",
+        "sale_price": "",
+        "date_on_sale_from": null,
+        "date_on_sale_from_gmt": null,
+        "date_on_sale_to": null,
+        "date_on_sale_to_gmt": null,
+        "on_sale": true,
+        "purchasable": true,
+        "total_sales": 0,
+        "virtual": false,
+        "downloadable": false,
+        "downloads": [],
+        "download_limit": -1,
+        "download_expiry": -1,
+        "external_url": "",
+        "button_text": "",
+        "tax_status": "taxable",
+        "tax_class": "zero-rate",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "backorders": "no",
+        "backorders_allowed": false,
+        "backordered": false,
+        "low_stock_amount": null,
+        "sold_individually": false,
+        "weight": "",
+        "dimensions": {
+            "length": "",
+            "width": "",
+            "height": ""
+        },
+        "shipping_required": true,
+        "shipping_taxable": true,
+        "shipping_class": "",
+        "shipping_class_id": 0,
+        "reviews_allowed": true,
+        "average_rating": "0.00",
+        "rating_count": 0,
+        "upsell_ids": [],
+        "cross_sell_ids": [],
+        "parent_id": 0,
+        "purchase_note": "",
+        "categories": [
+            {
+                "id": 15,
+                "name": "Uncategorized",
+                "slug": "uncategorized"
+            }
+        ],
+        "tags": [],
+        "images": [
+            {
+                "id": 125,
+                "date_created": "2024-10-23T06:33:06",
+                "date_created_gmt": "2024-10-23T06:33:06",
+                "date_modified": "2024-10-23T06:33:06",
+                "date_modified_gmt": "2024-10-23T06:33:06",
+                "src": "https:\/\/clickcart.wprdx.com\/demo\/wp-content\/uploads\/2024\/10\/uxe8z0u5.png",
+                "name": "uxe8z0u5",
+                "alt": ""
+            }
+        ],
+        "attributes": [
+            {
+                "id": 0,
+                "name": "size",
+                "slug": "size",
+                "position": 0,
+                "visible": true,
+                "variation": true,
+                "options": [
+                    "S",
+                    "M",
+                    "L"
+                ]
+            },
+            {
+                "id": 0,
+                "name": "color",
+                "slug": "color",
+                "position": 1,
+                "visible": true,
+                "variation": true,
+                "options": [
+                    "red",
+                    "yellow"
+                ]
+            }
+        ],
+        "default_attributes": [
+            {
+                "id": 0,
+                "name": "size",
+                "option": "S"
+            }
+        ],
+        "variations": [
+            177,
+            174,
+            175,
+            176
+        ],
+        "grouped_products": [],
+        "menu_order": 0,
+        "price_html": "<span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&#36;<\/span>8.00<\/bdi><\/span> &ndash; <span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&#36;<\/span>50.00<\/bdi><\/span>",
+        "related_ids": [],
+        "meta_data": [],
+        "stock_status": "instock",
+        "has_options": true,
+        "post_password": "",
+        "global_unique_id": "",
+        "_links": {
+            "self": [
+                {
+                    "href": "https:\/\/clickcart.wprdx.com\/demo\/wp-json\/wc\/v3\/products\/173"
+                }
+            ],
+            "collection": [
+                {
+                    "href": "https:\/\/clickcart.wprdx.com\/demo\/wp-json\/wc\/v3\/products"
+                }
+            ]
+        }
+    }
+]
