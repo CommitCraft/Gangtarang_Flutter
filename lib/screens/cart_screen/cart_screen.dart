@@ -37,7 +37,7 @@ class _CartScreenState extends State<CartScreen> {
   Future<void> fetchCartItems() async {
     print('getCart');
     final items = await dbHelper.getCartItems();
-    print('getCart Complite${items.length}');
+    print('getCart Complete${items.length}');
     setState(() {
       cartItems = items;
       badgeCount = items.length;

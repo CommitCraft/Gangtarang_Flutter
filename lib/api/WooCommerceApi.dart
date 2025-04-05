@@ -23,13 +23,11 @@ part 'WooCommerceApi.g.dart';
 @RestApi(baseUrl: Config.baseUrl)
 abstract class WooCommerceApi {
   factory WooCommerceApi(Dio dio, {String baseUrl}) = _WooCommerceApi;
-
   // Authentication setup
   static Dio createDio() {
     final dio = Dio();
     String consumerKey = Config.consumerKey;
     String consumerSecret = Config.consumerSecret;
-
     dio.options.headers['Authorization'] =
         'Basic ' + base64Encode(utf8.encode('$consumerKey:$consumerSecret'));
     return dio;

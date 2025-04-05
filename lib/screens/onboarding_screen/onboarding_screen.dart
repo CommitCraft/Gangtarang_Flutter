@@ -51,13 +51,13 @@ class _onboardingScreenState extends State<onboardingScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             CustomImageView(
-                              imagePath: ImageConstant.imgCart,
+                              imagePath: ImageConstant.g_logo,
                               width: 28,
                               height: 24,
                             ),
                             const SizedBox(width: 20),
                             Text(
-                              'AmazMart',
+                              'angtarang',
                               style: TextStyle(
                               fontFamily: 'Noto',
                               fontSize: 22,
@@ -106,7 +106,7 @@ class _onboardingScreenState extends State<onboardingScreen> {
                           padding: const EdgeInsets.only(
                               left: 40, right: 40, top: 16, bottom: 10),
                           child: Text(
-                            'Discovering The World Of Everything',
+                            'Divine Puja Emporium',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 28.fSize,
@@ -121,7 +121,7 @@ class _onboardingScreenState extends State<onboardingScreen> {
                           padding: const EdgeInsets.only(
                               right: 40, left: 40, top: 0, bottom: 10),
                           child: Text(
-                            'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+                            'Experts in Rudraksha Shaligram Shivling Yantras Shankhs and various spiritual artifacts.',
                             textAlign: TextAlign.center,
                             style: theme.textTheme.displayMedium?.copyWith(color: Color(0xFF7D899D)),
                           ),

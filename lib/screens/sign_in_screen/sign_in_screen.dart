@@ -71,10 +71,11 @@ class _SignInScreenState extends State<SignInScreen> {
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  CustomImageView(imagePath: ImageConstant.imgCart),
+                  CustomImageView(imagePath: ImageConstant.g_logo, width: 28,
+                    height: 24),
                   SizedBox(width: 5),
                   Text(
-                    'Gangtarang',
+                    'angtarang',
                     style: TextStyle(
                         fontFamily: 'Noto',
                         fontSize: 22,

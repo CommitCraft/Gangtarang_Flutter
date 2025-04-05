@@ -81,7 +81,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     CustomImageView(
-                      imagePath: ImageConstant.imgCart,
+                      imagePath: ImageConstant.g_logo,
                       height: 38.h,
                       width: 44.h,
                       margin: EdgeInsets.only(top: 8.h),
@@ -90,7 +90,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     Align(
                       alignment: Alignment.center,
                       child: Text(
-                        "Gangtarang",
+                        "angtarang",
                         style: theme.textTheme.displaySmall,
                       ),
                     ),

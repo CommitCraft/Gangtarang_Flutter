@@ -209,13 +209,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           CustomImageView(
-                            imagePath: ImageConstant.imgCart,
+                            imagePath: ImageConstant.g_logo,
                             width: 28,
                             height: 24,
                           ),
                           const SizedBox(width: 5),
                           Text(
-                            'Gangtarang',
+                            'angtarang',
                             style: TextStyle(
                         fontFamily: 'Noto',
                         fontSize: 22,
