@@ -15,6 +15,7 @@ dependencies:
   awesome_snackbar_content: ^0.1.4
   dropdown_search: ^6.0.1
   dio: ^5.7.0
+  oauth1: ^2.0.0
   retrofit: ^4.4.1
   json_annotation: ^4.9.0
   retrofit_generator: ^9.1.4

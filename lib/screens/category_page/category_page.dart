@@ -50,7 +50,7 @@ class _CategoryPageState extends State<CategoryPage> {
         tempList[index].addAll(categories);
         isLoading = false;
 
-         // categoriesList = categories;
+        categoriesList = categories;
       });
       print("Categories Respons${tempList.length}");
     } on DioException catch (e) {
@@ -360,37 +360,28 @@ class SlideCatModal {
 
 List<SlideCatModal> slidList = [
   SlideCatModal(
-      Name: 'View All', Image: ImageConstant.iconCatViewALl, Selected: true),
+      Name: 'Shivling',
+      Image: ImageConstant.shivaling,
+      Selected: true),
   SlideCatModal(
-    Name: 'Home',
-    Image: ImageConstant.iconCatHome,
+    Name: 'Shankh',
+    Image: ImageConstant.Shankh,
   ),
   SlideCatModal(
-    Name: 'Personal Care',
-    Image: ImageConstant.iconCatPersonalCare,
+    Name: 'Ganga Water',
+    Image: ImageConstant.water,
   ),
   SlideCatModal(
-    Name: 'Game',
-    Image: ImageConstant.iconCatGame,
+    Name: 'MALA',
+    Image: ImageConstant.mala,
   ),
   SlideCatModal(
-    Name: 'Furniture',
-    Image: ImageConstant.iconCatFurniture,
+    Name: 'Pendant',
+    Image: ImageConstant.pendant,
   ),
   SlideCatModal(
-    Name: 'Camara',
-    Image: ImageConstant.iconCatCamara,
-  ),
-  SlideCatModal(
-    Name: 'Phone',
-    Image: ImageConstant.iconCatPhone,
-  ),
-  SlideCatModal(
-    Name: 'Fashion',
-    Image: ImageConstant.iconCatFashion,
-  ),
-  SlideCatModal(
-    Name: 'Electornice',
-    Image: ImageConstant.iconCatElectornice,
+    Name: 'Ring',
+    Image: ImageConstant.ring,
   ),
 ];
+

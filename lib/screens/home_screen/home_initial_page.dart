@@ -19,6 +19,7 @@ import 'package:flutter/material.dart';
 import 'package:amazmart/api/shared_preference_helper.dart';
 import '../../core/app_export.dart';
 import '../../api/product.dart';
+import '../profile_page/profile_page.dart';
 import '../wishlist_page/wishlist_page.dart';
 import 'widgets/brandlist_item_widget.dart';
 import 'widgets/categorylist_item_widget.dart';
@@ -62,33 +63,35 @@ class HomeInitialPageState extends State<HomeInitialPage>
   void fetchCategories() async {
     try {
       final cat = await wooCommerceApi.getCategories(0);
+      debugPrint("Cat Meow :: ${cat.length}");
       setState(() {
         categoriesList = cat;
         isCatLoading = false;
         print('Length Length ${categoriesList.length}');
       });
     } catch (e) {
-      print('getcategoriesListError$e');
+      print('getcategoriesListError : $e');
     }
   }
 
   void fetchProducts() async {
     try {
       final fetchedProducts =
-          await wooCommerceApi.getProductList(null, null, null, null);
+          await wooCommerceApi.getProductList(146,"date","asc",1);
       setState(() {
         products = fetchedProducts;
         isLoading = false;
         print('Length Length ${products.length}');
       });
     } catch (e) {
-      print('getProductsError$e');
+      print('getProductsError $e');
     }
   }
 
   void fetchTags() async {
     try {
       final fetchedTags = await wooCommerceApi.getTags();
+      debugPrint("hey : ${fetchedTags.length}");
       setState(() {
         tagsList = fetchedTags;
         isLoadingTags = false;
@@ -355,7 +358,7 @@ Widget _buildCategoryList(BuildContext context) {
     {"title": "Ganga Water", "icon": ImageConstant.water},
     {"title": "MALA", "icon": ImageConstant.mala},
     {"title": "Pendant", "icon": ImageConstant.pendant},
-     {"title": "Ring", "icon": ImageConstant.ring},
+    {"title": "Ring", "icon": ImageConstant.ring},
   ];
 
   return Align(
@@ -735,7 +738,10 @@ Widget _buildTabview(BuildContext context) {
                         child: Row(
                           children: [
                             CustomImageView(
-                              imagePath: item.image != null ? item.image!.src ?? ImageConstant.imageNotFound :ImageConstant.imageNotFound ,
+                              imagePath: item.image != null
+                                  ? item.image!.src ??
+                                      ImageConstant.imageNotFound
+                                  : ImageConstant.imageNotFound,
                               margin: EdgeInsets.all(5),
                               height: 24,
                             ),
@@ -916,23 +922,40 @@ Widget buildAppBar(BuildContext context) {
 
         Container(
           decoration: BoxDecoration(
-            color: appTheme.gray100,
-            borderRadius: BorderRadius.circular(5.h),
+            color: appTheme.gray100, // Background color
+            borderRadius: BorderRadius.circular(5.h), // Rounded corners
           ),
-          margin: EdgeInsets.only(right: 12.h, top: 5.h, bottom: 5.h),
-          child: IconButton(
-            color: appTheme.black900,
-            icon: CustomImageView(
-              imagePath: ImageConstant.iconTr,
-            ), onPressed: () {
-  Navigator.of(context, rootNavigator: true).push(PageRouteBuilder(
-         pageBuilder: (context, animation, secondaryAnimation) =>
-  WishlistPage()
-         ));
-  },
-        )
-        )
+          margin: EdgeInsets.only(right: 12.h, top: 5.h, bottom: 5.h), // External spacing
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween, // Space the icons
+            children: [
+              // Existing IconButton
+              IconButton(
+                color: appTheme.black900, // Icon color
+                icon: Icon(Icons.favorite_border, color: appTheme.black900),
+                onPressed: () {
+                  Navigator.of(context, rootNavigator: true).push(
+                    PageRouteBuilder(
+                      pageBuilder: (context, animation, secondaryAnimation) =>
+                          WishlistPage(),
+                    ),
+                  );
+                },
+              ),
 
+              // Profile Icon
+              IconButton(
+                icon: Icon(Icons.account_circle, color: appTheme.black900), // Profile icon
+                onPressed: () {
+                  // Navigate to the profile page (Replace with actual navigation)
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => ProfilePage()),
+                  );
+                },
+              ),
+            ],
+          ),
+        )
 
 
         // iconNotification
@@ -1016,7 +1039,6 @@ Widget _buildTopSection(BuildContext context) {
 
       // Profile section
       Row(
-        
         // mainAxisSize: MainAxisSize.min,
         children: [
           SizedBox(width: 10.0),
@@ -1029,14 +1051,12 @@ Widget _buildTopSection(BuildContext context) {
           ),
           SizedBox(width: 10.0),
           Column(
-            crossAxisAlignment: CrossAxisAlignment.start  ,
-
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
                 // height: 70,
-                width: MediaQuery.of(context).size.width /2 -50,
-                child: Text(
-                    sp.getString('displayName') ?? 'Guset user',
+                width: MediaQuery.of(context).size.width / 2 - 50,
+                child: Text(sp.getString('displayName') ?? 'Guset user',
                     // 'hjgdfjhdsgfjdsgfhsdfhjsjfkjs dsffkdsjhkfjskf fd ',
                     // textDirection: TextDirection.ltr,
                     maxLines: 2,

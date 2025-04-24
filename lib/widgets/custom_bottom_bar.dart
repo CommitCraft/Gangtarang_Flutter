@@ -7,10 +7,9 @@ enum BottomBarEnum {
   cartonerror,
   grid,
   lock,
-
-
-
+  products_list, // New enum value for ProductsListScreen
 }
+
 
 class CustomBottomBar extends StatefulWidget {
   CustomBottomBar({this.onChanged});
@@ -33,7 +32,7 @@ class CustomBottomBarState extends State<CustomBottomBar> {
     BottomMenuModel(
       icon: ImageConstant.IconMenuProducts,
       activeIcon: ImageConstant.IconMenuProducts,
-      type: BottomBarEnum.cartonerror,
+      type: BottomBarEnum.products_list,
     ),
     // BottomMenuModel(
     //   icon: ImageConstant.navWishlist,

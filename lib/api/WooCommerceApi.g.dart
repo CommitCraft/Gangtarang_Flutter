@@ -9,19 +9,22 @@ part of 'WooCommerceApi.dart';
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations
 
 class _WooCommerceApi implements WooCommerceApi {
+
+  final Dio _dio;
+
+  String? baseUrl = "https://gangtarang.com/wp-json";
+
+  final ParseErrorLogger? errorLogger;
+
   _WooCommerceApi(
     this._dio, {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= 'https://amazmart.wprdx.com/demo/wp-json';
+    baseUrl ??= 'https://gangtarang.com/wp-json';
   }
 
-  final Dio _dio;
 
-  String? baseUrl;
-
-  final ParseErrorLogger? errorLogger;
 
   @override
   Future<Customer> getUserInfo(int id) async {

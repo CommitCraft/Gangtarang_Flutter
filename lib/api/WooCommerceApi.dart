@@ -12,6 +12,7 @@ import 'package:amazmart/api/system_status/system_status.dart';
 import 'package:amazmart/api/tags.dart';
 import 'package:amazmart/api/write_review.dart';
 import 'package:amazmart/api/write_review_response.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 import 'package:amazmart/api/wishlist_model.dart';
@@ -28,6 +29,7 @@ abstract class WooCommerceApi {
     final dio = Dio();
     String consumerKey = Config.consumerKey;
     String consumerSecret = Config.consumerSecret;
+    debugPrint("Token ::: ${ base64Encode(utf8.encode('$consumerKey:$consumerSecret'))}");
     dio.options.headers['Authorization'] =
         'Basic ' + base64Encode(utf8.encode('$consumerKey:$consumerSecret'));
     return dio;
@@ -69,7 +71,8 @@ Future<SystemStatus> getSystem_status();
 
   // Products
   @GET("/wc/v3/products")
-  Future<List<Products>> getProductList(@Query('category') int? catId, @Query('orderby') String? orderby , @Query('order') String? order , @Query('page') int? page );
+  Future<List<Products>> getProductList(@Query('category') int? catId, @Query('orderby')
+  String? orderby , @Query('order') String? order , @Query('page') int? page );
   // Products only
   @GET("/wc/v3/products")
   Future<List<Products>> getProductListOnly(@Query('include') String ids);

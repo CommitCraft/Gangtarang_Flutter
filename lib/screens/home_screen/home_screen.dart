@@ -5,6 +5,7 @@ import 'package:amazmart/screens/profile_page/profile_page.dart';
 import 'package:amazmart/screens/wishlist_page/wishlist_page.dart';
 import 'package:amazmart/widgets/custom_bottom_bar.dart';
 import 'package:flutter/material.dart';
+import '../products_list_screen/products_list_screen.dart';
 import 'home_initial_page.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -13,6 +14,7 @@ class HomeScreen extends StatelessWidget {
           key: key,
         );
   GlobalKey<NavigatorState> navigatorKey = GlobalKey();
+
   // final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
@@ -34,8 +36,10 @@ class HomeScreen extends StatelessWidget {
                   key: navigatorKey,
                   initialRoute: AppRoutes.homeInitialPage,
                   onGenerateRoute: (routeSetting) => PageRouteBuilder(
-                    pageBuilder: (ctx, ani, ani1) =>
-                        getCurrentPage(routeSetting.name!),
+                    pageBuilder: (ctx, ani, ani1) {
+                      debugPrint("routeSetting.name : ${routeSetting.name} ");
+                      return getCurrentPage(routeSetting.name!);
+                    },
                     transitionDuration: Duration(seconds: 0),
                   ),
                 ),
@@ -57,6 +61,7 @@ class HomeScreen extends StatelessWidget {
       width: double.maxFinite,
       child: CustomBottomBar(
         onChanged: (BottomBarEnum type) {
+          debugPrint("Current Route : ${type.name} $type");
           Navigator.pushNamed(
             navigatorKey.currentContext!,
             getCurrentRoute(type),
@@ -67,6 +72,7 @@ class HomeScreen extends StatelessWidget {
   }
 
   String getCurrentRoute(BottomBarEnum type) {
+    debugPrint("Current Route : ${type.name} $type");
     switch (type) {
       case BottomBarEnum.vectoronprimary20x20:
         return AppRoutes.homeInitialPage;
@@ -76,6 +82,9 @@ class HomeScreen extends StatelessWidget {
         return AppRoutes.cartScreen;
       case BottomBarEnum.grid:
         return AppRoutes.categoryPage;
+      case BottomBarEnum.products_list: // Add this case for ProductsListScreen
+        return AppRoutes
+            .productsListScreen; // Assuming you've defined this in AppRoutes
       case BottomBarEnum.lock:
       default:
         return AppRoutes.profilePage;
@@ -83,6 +92,7 @@ class HomeScreen extends StatelessWidget {
   }
 
   Widget getCurrentPage(String currentRoute) {
+    debugPrint("currentRoute :::$currentRoute");
     switch (currentRoute) {
       case AppRoutes.homeInitialPage:
         return HomeInitialPage();
@@ -94,6 +104,8 @@ class HomeScreen extends StatelessWidget {
         return ProfilePage();
       case AppRoutes.cartScreen:
         return CartScreen();
+      case AppRoutes.productsListScreen:
+        return ProductsListScreen();
       default:
         return DefaultWidget();
     }
