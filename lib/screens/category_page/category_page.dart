@@ -125,6 +125,7 @@ class _CategoryPageState extends State<CategoryPage> {
                       scrollDirection: Axis.vertical,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
                         // crossAxisAlignment: CrossAxisAlignment.start,
                         children: !isLoading
                             ? List.generate(
@@ -197,6 +198,7 @@ class _CategoryPageState extends State<CategoryPage> {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
@@ -340,10 +342,15 @@ class Cat {
 
 // add category is blow list in show in app main category id for show sub categroy
 List<Cat> catList = [
-  Cat(catName: 'Televisions', catImage: '', catId: 15),
-  Cat(catName: 'Camera', catImage: '', catId: 31),
-  Cat(catName: 'Computer Accessories', catImage: '', catId: 35),
-  Cat(catName: 'Brand', catImage: '', catId: 39),
+  //Cat(catName: 'Televisions', catImage: '', catId: 15),
+  // Cat(catName: 'Camera', catImage: '', catId: 31),
+  // Cat(catName: 'Computer Accessories', catImage: '', catId: 35),
+  Cat(catName: 'Shivlings', catImage: '', catId: 38),
+  Cat(catName: 'Shankh', catImage: '', catId: 36),
+  Cat(catName: 'Ganga Water', catImage: '', catId: 32),
+  Cat(catName: 'MALA', catImage: '', catId: 39),
+  Cat(catName: 'Pendant', catImage: '', catId: 33),
+  Cat(catName: 'Ring', catImage: '', catId: 32),
 ];
 
 class SlideCatModal {
@@ -359,10 +366,8 @@ class SlideCatModal {
 }
 
 List<SlideCatModal> slidList = [
-  SlideCatModal(
-      Name: 'Shivling',
-      Image: ImageConstant.shivaling,
-      Selected: true),
+  SlideCatModal(Name: 'View All', Image: ImageConstant.iconHome, Selected: true),
+  SlideCatModal(Name: 'Shivling', Image: ImageConstant.shivaling),
   SlideCatModal(
     Name: 'Shankh',
     Image: ImageConstant.Shankh,
@@ -384,4 +389,3 @@ List<SlideCatModal> slidList = [
     Image: ImageConstant.ring,
   ),
 ];
-

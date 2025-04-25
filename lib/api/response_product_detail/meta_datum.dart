@@ -5,7 +5,7 @@ import 'package:collection/collection.dart';
 class MetaDatum {
 	int? id;
 	String? key;
-	List<dynamic>? value;
+	dynamic value;
 
 	MetaDatum({this.id, this.key, this.value});
 
@@ -15,7 +15,7 @@ class MetaDatum {
 	factory MetaDatum.fromMap(Map<String, Object?> data) => MetaDatum(
 				id: data['id'] as int?,
 				key: data['key'] as String?,
-				value: data['value'] as List<dynamic>?,
+				value: data['value'] as dynamic,
 			);
 
 	Map<String, Object?> toMap() => {

@@ -18,7 +18,7 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
-      String currencySymbol = '\$';
+      String currencySymbol = '\₹';
   List<CartItem> cartItems = [];
   late var dbHelper =
       DatabaseHelper(); // webpage not work mysql so build app in android | ios
@@ -29,7 +29,7 @@ class _CartScreenState extends State<CartScreen> {
   void initState() {
     super.initState();
       SharedPreferenceHelper sp = SharedPreferenceHelper();
-    currencySymbol = sp.getString('currencySymbol') ?? '\$';
+    currencySymbol = sp.getString('currencySymbol') ?? '\₹';
     dbHelper = DatabaseHelper();
     fetchCartItems();
   }

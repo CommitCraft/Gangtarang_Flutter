@@ -36,13 +36,13 @@ class ProductWishlistItemWidget extends StatefulWidget {
 }
 
 class _ProductWishlistItemWidgetState extends State<ProductWishlistItemWidget> {
-    String currencySymbol = '\$';
+    String currencySymbol = '\₹';
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
        SharedPreferenceHelper sp = SharedPreferenceHelper();
-    currencySymbol = sp.getString('currencySymbol') ?? '\$';
+    currencySymbol = sp.getString('currencySymbol') ?? '\₹';
   }
 
   @override

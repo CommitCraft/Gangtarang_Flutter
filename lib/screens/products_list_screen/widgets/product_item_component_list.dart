@@ -34,12 +34,12 @@ class ProductItemComponentList extends StatefulWidget {
 
 class _ProductItemComponentListState extends State<ProductItemComponentList> {
 bool wishlistSelecte = false;
-  String currencySymbol = '\$';
+  String currencySymbol = '\₹';
   @override
   void initState() {
     super.initState();
     SharedPreferenceHelper sp = SharedPreferenceHelper();
-    currencySymbol = sp.getString('currencySymbol') ?? '\$';
+    currencySymbol = sp.getString('currencySymbol') ?? '\₹';
   }
   @override
   Widget build(BuildContext context) {
@@ -103,6 +103,7 @@ bool wishlistSelecte = false;
                     children: [
                       Text(
                         '$currencySymbol${widget.salePrice}',
+
                         style: const TextStyle(
                           fontSize: 16.0,
                           color: Colors.black,

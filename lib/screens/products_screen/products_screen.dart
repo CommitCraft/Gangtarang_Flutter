@@ -806,7 +806,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
         Column(
           children: rpd.metaData!.map(
             (e) {
-              return metaSpecRow(e.key!, '${e.value?.first}');
+              return metaSpecRow(e.key!, '${e.value}');
             },
           ).toList(),
         ),
@@ -838,10 +838,11 @@ class _ProductsScreenState extends State<ProductsScreen> {
             child: Row(
               children: [
                 Text(
-                  value,
+                  value.length > 10 ? value.substring(0,10) : value,
                   style: const TextStyle(
                       fontWeight: FontWeight.w700,
                       color: Colors.black,
+                      overflow: TextOverflow.fade,
                       fontSize: 15),
                 ),
                 CustomImageView(

@@ -122,7 +122,8 @@ class HomeInitialPageState extends State<HomeInitialPage>
                   children: [
                     _buildSearchAndCategories(context),
                     SizedBox(height: 12.h),
-                    _buildCategoryList(context),
+                    _buildTabview(context),
+                    //_buildCategoryList(context),
                     SizedBox(height: 6.h),
                     _buildTrendingBanner(context),
                     SizedBox(height: 10.h),
@@ -166,8 +167,9 @@ class HomeInitialPageState extends State<HomeInitialPage>
                     SizedBox(height: 8.h),
                     _buildAdditionalBanner(context),
                     SizedBox(height: 16.h),
-                    _buildTabview(context),
-                    SizedBox(height: 16.h),
+                    // _buildTabview(context),
+                    // SizedBox(height: 16.h),
+
                   ],
                 ),
               ),

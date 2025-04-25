@@ -29,13 +29,13 @@ class ProductlistItemWidget extends StatefulWidget {
 
 class _ProductlistItemWidgetState extends State<ProductlistItemWidget> {
   late int quantity;
-    String currencySymbol = '\$';
+    String currencySymbol = '\₹';
 
   @override
   void initState() {
     super.initState();
        SharedPreferenceHelper sp = SharedPreferenceHelper();
-    currencySymbol = sp.getString('currencySymbol') ?? '\$';
+    currencySymbol = sp.getString('currencySymbol') ?? '\₹';
     quantity = widget.initialQuantity;
   }
 
