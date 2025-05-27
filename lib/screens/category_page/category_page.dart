@@ -23,6 +23,16 @@ class _CategoryPageState extends State<CategoryPage> {
   late List<List<CategoriesItems>> tempList = [];
   late bool isLoading = true;
   late bool isTempLoad = false;
+  int currentindex=-1;
+  String currentTitle="";
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    currentindex=-1;
+    currentTitle="";
+    super.dispose();
+  }
 
   @override
   void initState() {
@@ -78,75 +88,65 @@ class _CategoryPageState extends State<CategoryPage> {
                   colors: [appTheme.cyan50, appTheme.cyan200],
                 ),
               ),
-              child: ListView(
-                padding: const EdgeInsets.symmetric(vertical: 20),
-                children: slidList.map(
-                  (e) {
-                    return _buildLeftSidebarItem(
-                      title: e.Name,
-                      iconPath: e.Image,
-                      Selected: e.Selected,
-                      onTap: () {
-                        setState(() {
-                          for (var el in slidList) {
-                            el.Selected = false;
-                          }
-                          e.Selected = true;
-                        });
-                      },
-                    );
-                  },
-                ).toList(),
-                // children: [
-                //   _buildLeftSidebarItem(
-                //     title: "View All",
-                //     iconPath: ImageConstant.img1,
-                //   ),
-                //   _buildLeftSidebarItem(
-                //     title: "Personal Care",
-                //     iconPath: ImageConstant.img1,
-                //   ),
-                //   _buildLeftSidebarItem(
-                //     title: "Home",
-                //     iconPath: ImageConstant.img1,
-                //   ),
-                //   _buildLeftSidebarItem(
-                //     title: "Toy & Baby",
-                //     iconPath: ImageConstant.img1,
-                //   ),
-                // ],
-              ),
-            ),
+              child: ListView.builder(
+        padding: const EdgeInsets.symmetric(vertical: 20),
+        itemCount: slidList.length,
+        itemBuilder: (context, index) {
+          final e = slidList[index];
+          return _buildLeftSidebarItem(
+            title: e.Name,
+            iconPath: e.Image,
+            Selected: e.Selected,
+            onTap: () {
+              setState(() {
+                for (var el in slidList) {
+                  el.Selected = false;
+                }
+                currentindex = index-1;
+                currentTitle=e.Name;
+                e.Selected = true;
+              });
+            },
+          );
+        },
+      ),
+
+    ),
             // Main Content
             Expanded(
               child: !isTempLoad
                   ? Text('data')
                   : SingleChildScrollView(
-                      scrollDirection: Axis.vertical,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        // crossAxisAlignment: CrossAxisAlignment.start,
-                        children: !isLoading
-                            ? List.generate(
-                                catList.length,
-                                (index) {
-                                  var e = catList[index];
-                                  // fetchCategories(e.catId, index);
-                                  return _buildSection(
-                                    title: e.catName,
-                                    child: _buildCatItemList(
-                                        context, tempList[index]),
-                                  );
-                                },
-                              )
-                            : [
-                                Center(
-                                  child: CircularProgressIndicator(),
-                                )
-                              ],
+                scrollDirection: Axis.vertical,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  // mainAxisSize: MainAxisSize.min,
+                  // crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    !isLoading
+                        ? (currentindex != -1
+                        ? _buildSection(
+                      title: currentTitle,
+                      child: _buildCatItemList(context, tempList[currentindex]),
+                    )
+                        : Column( // Added Column to hold the list of sections
+                      children: List.generate(
+                        catList.length,
+                            (index) {
+                          var e = catList[index];
+                          return _buildSection(
+                            title: e.catName,
+                            child: _buildCatItemList(context, tempList[index]),
+                          );
+                        },
                       ),
+                    ))
+                        : Center( // This part should be inside the children list
+                      child: CircularProgressIndicator(),
                     ),
+                  ],
+                ),
+              ),
             ),
           ],
         ),
@@ -244,6 +244,41 @@ class _CategoryPageState extends State<CategoryPage> {
                         ProductsListScreen(
                       items: items[index],
                     ),
+                  ));
+                },
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+
+  Widget _buildSelectedItemSection(BuildContext context, List<CategoriesItems> items){
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      padding: EdgeInsets.only(left: 8),
+      child: Flex(
+        direction: Axis.vertical,
+        children: [
+          Wrap(
+            spacing: 8.0, // Adjust spacing between items as needed
+            runSpacing: 8.0, // Adjust spacing between rows as needed
+            children: List.generate(
+              items.length,
+                  (index) => CategorieslistItemWidget(
+                imagePath: items[index].image != null
+                    ? items[index].image!.src!
+                    : ImageConstant.imageNotFound,
+                label: items[index].name,
+                onTap: () {
+                  Navigator.of(context, rootNavigator: true)
+                      .push(PageRouteBuilder(
+                    pageBuilder: (context, animation, secondaryAnimation) =>
+                        ProductsListScreen(
+                          items: items[index],
+                        ),
                   ));
                 },
               ),

@@ -1,0 +1,2 @@
+D:/codes/flutterpro/Gangtarang_Flutter/android/app/.cxx/Debug/362f3oi6/x86_64/CMakeFiles/edit_cache.dir
+D:/codes/flutterpro/Gangtarang_Flutter/android/app/.cxx/Debug/362f3oi6/x86_64/CMakeFiles/rebuild_cache.dir
