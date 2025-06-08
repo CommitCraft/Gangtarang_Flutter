@@ -29,66 +29,66 @@ class _ChooseYourLanguageScreenState extends State<ChooseYourLanguageScreen> {
       flagPath: ImageConstant.flag_english,
       isActive: true,
     ),
-    LanguageListItem(
-      language: 'French',
-      flagPath: ImageConstant.flag_French,
-      isActive: false,
-    ),
-    LanguageListItem(
-      language: 'Germany',
-      flagPath: ImageConstant.flag_germany,
-      isActive: false,
-    ),
-    LanguageListItem(
-      language: 'italian',
-      flagPath: ImageConstant.flag_italian,
-      isActive: false,
-    ),
-    LanguageListItem(
-      language: 'Thai',
-      flagPath: ImageConstant.flag_thai,
-      isActive: false,
-    ),
-    LanguageListItem(
-      language: 'Polish',
-      flagPath: ImageConstant.flag_polish,
-      isActive: false,
-    ),
-    LanguageListItem(
-      language: 'Chinese',
-      flagPath: ImageConstant.flag_chinese,
-      isActive: false,
-    ),
-    LanguageListItem(
-      language: 'Urdu',
-      flagPath: ImageConstant.flag_urdu,
-      isActive: false,
-    ),
-    LanguageListItem(
-      language: 'Canadian',
-      flagPath: ImageConstant.flag_canadian,
-      isActive: false,
-    ),
-    LanguageListItem(
-      language: 'Danish',
-      flagPath: ImageConstant.flag_danish,
-      isActive: false,
-    ),
-    LanguageListItem(
-      language: 'Japanese',
-      flagPath: ImageConstant.flag_japanese,
-      isActive: false,
-    ),
-    LanguageListItem(
-      language: 'Dutch',
-      flagPath: ImageConstant.flag_dutch,
-      isActive: false,
-    ),
-    LanguageListItem(
-      language: 'Turkis',
-      flagPath: ImageConstant.flag_turkish,
-      isActive: false,
-    ),
+    // LanguageListItem(
+    //   language: 'French',
+    //   flagPath: ImageConstant.flag_French,
+    //   isActive: false,
+    // ),
+    // LanguageListItem(
+    //   language: 'Germany',
+    //   flagPath: ImageConstant.flag_germany,
+    //   isActive: false,
+    // ),
+    // LanguageListItem(
+    //   language: 'italian',
+    //   flagPath: ImageConstant.flag_italian,
+    //   isActive: false,
+    // ),
+    // LanguageListItem(
+    //   language: 'Thai',
+    //   flagPath: ImageConstant.flag_thai,
+    //   isActive: false,
+    // ),
+    // LanguageListItem(
+    //   language: 'Polish',
+    //   flagPath: ImageConstant.flag_polish,
+    //   isActive: false,
+    // ),
+    // LanguageListItem(
+    //   language: 'Chinese',
+    //   flagPath: ImageConstant.flag_chinese,
+    //   isActive: false,
+    // ),
+    // LanguageListItem(
+    //   language: 'Urdu',
+    //   flagPath: ImageConstant.flag_urdu,
+    //   isActive: false,
+    // ),
+    // LanguageListItem(
+    //   language: 'Canadian',
+    //   flagPath: ImageConstant.flag_canadian,
+    //   isActive: false,
+    // ),
+    // LanguageListItem(
+    //   language: 'Danish',
+    //   flagPath: ImageConstant.flag_danish,
+    //   isActive: false,
+    // ),
+    // LanguageListItem(
+    //   language: 'Japanese',
+    //   flagPath: ImageConstant.flag_japanese,
+    //   isActive: false,
+    // ),
+    // LanguageListItem(
+    //   language: 'Dutch',
+    //   flagPath: ImageConstant.flag_dutch,
+    //   isActive: false,
+    // ),
+    // LanguageListItem(
+    //   language: 'Turkis',
+    //   flagPath: ImageConstant.flag_turkish,
+    //   isActive: false,
+    // ),
 
     // Add more languages here as needed
   ];

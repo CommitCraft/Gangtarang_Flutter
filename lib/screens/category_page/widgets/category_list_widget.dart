@@ -20,6 +20,7 @@ class CategorieslistItemWidget extends StatelessWidget {
       child: SizedBox(
         width: 70.h,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Container(
               height: 70.h,

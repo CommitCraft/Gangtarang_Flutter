@@ -1,14 +1,75 @@
 import 'package:amazmart/api/WooCommerceApi.dart';
 import 'package:amazmart/api/categories_items.dart';
-import 'package:amazmart/api/mySql/cart_item.dart';
 import 'package:amazmart/screens/category_page/widgets/category_list_widget.dart';
-import 'package:amazmart/screens/home_screen/home_initial_page.dart';
 import 'package:amazmart/screens/products_list_screen/products_list_screen.dart';
 import 'package:amazmart/screens/search_screen/search_screen.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:responsive_grid_list/responsive_grid_list.dart';
 import '../../core/app_export.dart';
+
+/// Data model for main categories.
+class Cat {
+  final int catId;
+  final String catName;
+  final String catImage;
+  bool catSelected;
+
+  Cat({
+    required this.catName,
+    required this.catId,
+    required this.catImage,
+    this.catSelected = false,
+  });
+}
+
+/// List of main categories to be displayed.
+List<Cat> catList = [
+  Cat(catName: 'Shivlings', catImage: '', catId: 38),
+  Cat(catName: 'Shankh', catImage: '', catId: 36),
+  Cat(catName: 'Ganga Water', catImage: '', catId: 32),
+  Cat(catName: 'MALA', catImage: '', catId: 39),
+  Cat(catName: 'Pendant', catImage: '', catId: 33),
+  Cat(catName: 'Ring', catImage: '', catId: 32),
+];
+
+/// Data model for sidebar items.
+class SlideCatModal {
+  final String Name;
+  final String Image;
+  bool Selected;
+
+  SlideCatModal({
+    required this.Name,
+    required this.Image,
+    this.Selected = false,
+  });
+}
+
+/// List of items for the sidebar navigation.
+List<SlideCatModal> slidList = [
+  SlideCatModal(Name: 'View All', Image: ImageConstant.iconHome, Selected: true),
+  SlideCatModal(Name: 'Shivling', Image: ImageConstant.shivaling),
+  SlideCatModal(
+    Name: 'Shankh',
+    Image: ImageConstant.Shankh,
+  ),
+  SlideCatModal(
+    Name: 'Ganga Water',
+    Image: ImageConstant.water,
+  ),
+  SlideCatModal(
+    Name: 'MALA',
+    Image: ImageConstant.mala,
+  ),
+  SlideCatModal(
+    Name: 'Pendant',
+    Image: ImageConstant.pendant,
+  ),
+  SlideCatModal(
+    Name: 'Ring',
+    Image: ImageConstant.ring,
+  ),
+];
 
 class CategoryPage extends StatefulWidget {
   const CategoryPage({Key? key}) : super(key: key);
@@ -19,54 +80,73 @@ class CategoryPage extends StatefulWidget {
 
 class _CategoryPageState extends State<CategoryPage> {
   late WooCommerceApi _wooCommerceApi;
-  late List<CategoriesItems> categoriesList = [];
-  late List<List<CategoriesItems>> tempList = [];
-  late bool isLoading = true;
-  late bool isTempLoad = false;
-  int currentindex=-1;
-  String currentTitle="";
-
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    currentindex=-1;
-    currentTitle="";
-    super.dispose();
-  }
+  late List<List<CategoriesItems>> subcategoriesByMainCategory = [];
+  bool isLoading = true;
+  int _currentSidebarIndex = 0; // 0 for "View All"
+  String _currentSidebarTitle = 'View All';
 
   @override
   void initState() {
     super.initState();
     _wooCommerceApi = WooCommerceApi(WooCommerceApi.createDio());
-// list creata for loop run one by one all cate groy add temp var more
 
-    // Initialize tempList with empty sub-lists
-    for (int i = 0; i < catList.length; i++) {
-      tempList.add([]); // Add an empty sub-list for each category
+    for (int i = 0; i < catList.length + 1; i++) {
+      subcategoriesByMainCategory.add([]);
     }
 
-    for (int i = 0; i < catList.length; i++) {
-      var item = catList[i];
-      fetchCategories(item.catId, i);
-    }
-    isTempLoad = true;
+    _fetchAllCategories();
   }
 
-  Future fetchCategories(int id, int index) async {
-    print('Categories $id $index');
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  Future<void> _fetchAllCategories() async {
+    setState(() {
+      isLoading = true;
+    });
     try {
-      var categories = await _wooCommerceApi.getCategories(id); // id
-      setState(() {
-        tempList[index].addAll(categories);
-        isLoading = false;
+      for (int i = 0; i < catList.length; i++) {
+        var item = catList[i];
+        await _fetchSubcategories(item.catId, i + 1); // +1 because index 0 is "View All"
+      }
+      _populateViewAllSubcategories();
 
-        categoriesList = categories;
-      });
-      print("Categories Respons${tempList.length}");
     } on DioException catch (e) {
-      print('Categories Error ${e.response}');
+      print('Categories Fetch Error: ${e.response?.data ?? e.message}');
+      // TODO: Display user-friendly error message
+    } finally {
+      setState(() {
+        isLoading = false;
+      });
     }
   }
+
+  Future<void> _fetchSubcategories(int id, int index) async {
+    try {
+      var categories = await _wooCommerceApi.getCategories(id);
+      if (mounted) {
+        setState(() {
+          subcategoriesByMainCategory[index].addAll(categories);
+        });
+      }
+    } on DioException catch (e) {
+      print('Subcategories Error for ID $id: ${e.response?.data ?? e.message}');
+      // TODO: Handle individual subcategory fetch errors if necessary
+    }
+  }
+
+  void _populateViewAllSubcategories() {
+    final List<CategoriesItems> allSubcategories = [];
+    for (int i = 1; i < subcategoriesByMainCategory.length; i++) {
+      allSubcategories.addAll(subcategoriesByMainCategory[i]);
+    }
+    setState(() {
+      subcategoriesByMainCategory[0] = allSubcategories;
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -88,62 +168,53 @@ class _CategoryPageState extends State<CategoryPage> {
                   colors: [appTheme.cyan50, appTheme.cyan200],
                 ),
               ),
-              child: ListView.builder(
-        padding: const EdgeInsets.symmetric(vertical: 20),
-        itemCount: slidList.length,
-        itemBuilder: (context, index) {
-          final e = slidList[index];
-          return _buildLeftSidebarItem(
-            title: e.Name,
-            iconPath: e.Image,
-            Selected: e.Selected,
-            onTap: () {
-              setState(() {
-                for (var el in slidList) {
-                  el.Selected = false;
-                }
-                currentindex = index-1;
-                currentTitle=e.Name;
-                e.Selected = true;
-              });
-            },
-          );
-        },
-      ),
-
-    ),
+              child: Align(
+                alignment: Alignment.topCenter,
+                child: ListView.builder(
+                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  itemCount: slidList.length,
+                  itemBuilder: (context, index) {
+                    final e = slidList[index];
+                    return _buildLeftSidebarItem(
+                      title: e.Name,
+                      iconPath: e.Image,
+                      isSelected: _currentSidebarIndex == index,
+                      onTap: () {
+                        setState(() {
+                          _currentSidebarIndex = index;
+                          _currentSidebarTitle = e.Name;
+                        });
+                      },
+                    );
+                  },
+                ),
+              ),
+            ),
             // Main Content
             Expanded(
-              child: !isTempLoad
-                  ? Text('data')
+              child: isLoading
+                  ? const Center(child: CircularProgressIndicator())
                   : SingleChildScrollView(
                 scrollDirection: Axis.vertical,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  // mainAxisSize: MainAxisSize.min,
-                  // crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    !isLoading
-                        ? (currentindex != -1
-                        ? _buildSection(
-                      title: currentTitle,
-                      child: _buildCatItemList(context, tempList[currentindex]),
-                    )
-                        : Column( // Added Column to hold the list of sections
-                      children: List.generate(
+                    if (_currentSidebarIndex == 0) // "View All" selected
+                      ...List.generate(
                         catList.length,
                             (index) {
                           var e = catList[index];
-                          return _buildSection(
+                          return _buildCategorySection(
                             title: e.catName,
-                            child: _buildCatItemList(context, tempList[index]),
+                            items: subcategoriesByMainCategory[index + 1], // +1 for "View All"
                           );
                         },
+                      )
+                    else // A specific category selected
+                      _buildCategorySection(
+                        title: _currentSidebarTitle,
+                        items: subcategoriesByMainCategory[_currentSidebarIndex],
                       ),
-                    ))
-                        : Center( // This part should be inside the children list
-                      child: CircularProgressIndicator(),
-                    ),
                   ],
                 ),
               ),
@@ -154,15 +225,16 @@ class _CategoryPageState extends State<CategoryPage> {
     );
   }
 
-  Widget _buildLeftSidebarItem(
-      {required String title,
-      required String iconPath,
-      required VoidCallback onTap,
-      required bool Selected}) {
+  Widget _buildLeftSidebarItem({
+    required String title,
+    required String iconPath,
+    required VoidCallback onTap,
+    required bool isSelected,
+  }) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        color: Selected ? appTheme.whiteA700 : Colors.transparent,
+        color: isSelected ? appTheme.whiteA700 : Colors.transparent,
         child: Column(
           children: [
             IconButton(
@@ -174,9 +246,7 @@ class _CategoryPageState extends State<CategoryPage> {
               textAlign: TextAlign.center,
               style: CustomTextStyles.bodyMediumOnPrimary_1,
             ),
-            const SizedBox(
-              height: 3,
-            ),
+            const SizedBox(height: 3),
             const Divider(color: Colors.white54),
           ],
         ),
@@ -184,7 +254,10 @@ class _CategoryPageState extends State<CategoryPage> {
     );
   }
 
-  Widget _buildSection({required String title, required Widget child}) {
+  Widget _buildCategorySection({
+    required String title,
+    required List<CategoriesItems> items,
+  }) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 10),
       decoration: BoxDecoration(
@@ -197,8 +270,8 @@ class _CategoryPageState extends State<CategoryPage> {
         ],
       ),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
@@ -208,70 +281,29 @@ class _CategoryPageState extends State<CategoryPage> {
             ),
           ),
           const Divider(),
-          const SizedBox(
-            height: 8,
-          ),
-          child,
-          const SizedBox(
-            height: 8,
-          ),
+          const SizedBox(height: 8),
+          _buildSubcategoryGrid(items),
+          const SizedBox(height: 8),
         ],
       ),
     );
   }
 
-  Widget _buildCatItemList(BuildContext context, List<CategoriesItems> items) {
+  Widget _buildSubcategoryGrid(List<CategoriesItems> items) {
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
-      padding: EdgeInsets.only(left: 8),
+      padding: const EdgeInsets.only(left: 8),
       child: Flex(
         direction: Axis.vertical,
         children: [
           Wrap(
-            spacing: 8.0, // Adjust spacing between items as needed
-            runSpacing: 8.0, // Adjust spacing between rows as needed
-            children: List.generate(
-              items.length,
-              (index) => CategorieslistItemWidget(
-                imagePath: items[index].image != null
-                    ? items[index].image!.src!
-                    : ImageConstant.imageNotFound,
-                label: items[index].name,
-                onTap: () {
-                  Navigator.of(context, rootNavigator: true)
-                      .push(PageRouteBuilder(
-                    pageBuilder: (context, animation, secondaryAnimation) =>
-                        ProductsListScreen(
-                      items: items[index],
-                    ),
-                  ));
-                },
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-
-  Widget _buildSelectedItemSection(BuildContext context, List<CategoriesItems> items){
-    return SingleChildScrollView(
-      scrollDirection: Axis.vertical,
-      padding: EdgeInsets.only(left: 8),
-      child: Flex(
-        direction: Axis.vertical,
-        children: [
-          Wrap(
-            spacing: 8.0, // Adjust spacing between items as needed
-            runSpacing: 8.0, // Adjust spacing between rows as needed
+            spacing: 8.0,
+            runSpacing: 8.0,
             children: List.generate(
               items.length,
                   (index) => CategorieslistItemWidget(
-                imagePath: items[index].image != null
-                    ? items[index].image!.src!
-                    : ImageConstant.imageNotFound,
-                label: items[index].name,
+                imagePath: items[index].image?.src ?? ImageConstant.imageNotFound,
+                label: items[index].name ?? 'N/A',
                 onTap: () {
                   Navigator.of(context, rootNavigator: true)
                       .push(PageRouteBuilder(
@@ -294,8 +326,7 @@ class _CategoryPageState extends State<CategoryPage> {
       height: kToolbarHeight,
       width: double.maxFinite,
       decoration: BoxDecoration(
-        color: appTheme.whiteA700, // Light blue
-        // Light green
+        color: appTheme.whiteA700,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -360,67 +391,3 @@ class _CategoryPageState extends State<CategoryPage> {
     );
   }
 }
-
-class Cat {
-  final int catId;
-  final String catName;
-  final String catImage;
-  bool catSelected;
-
-  Cat({
-    required this.catName,
-    required this.catId,
-    required this.catImage,
-    this.catSelected = false,
-  });
-}
-
-// add category is blow list in show in app main category id for show sub categroy
-List<Cat> catList = [
-  //Cat(catName: 'Televisions', catImage: '', catId: 15),
-  // Cat(catName: 'Camera', catImage: '', catId: 31),
-  // Cat(catName: 'Computer Accessories', catImage: '', catId: 35),
-  Cat(catName: 'Shivlings', catImage: '', catId: 38),
-  Cat(catName: 'Shankh', catImage: '', catId: 36),
-  Cat(catName: 'Ganga Water', catImage: '', catId: 32),
-  Cat(catName: 'MALA', catImage: '', catId: 39),
-  Cat(catName: 'Pendant', catImage: '', catId: 33),
-  Cat(catName: 'Ring', catImage: '', catId: 32),
-];
-
-class SlideCatModal {
-  final String Name;
-  final String Image;
-  bool Selected;
-
-  SlideCatModal({
-    required this.Name,
-    required this.Image,
-    this.Selected = false,
-  });
-}
-
-List<SlideCatModal> slidList = [
-  SlideCatModal(Name: 'View All', Image: ImageConstant.iconHome, Selected: true),
-  SlideCatModal(Name: 'Shivling', Image: ImageConstant.shivaling),
-  SlideCatModal(
-    Name: 'Shankh',
-    Image: ImageConstant.Shankh,
-  ),
-  SlideCatModal(
-    Name: 'Ganga Water',
-    Image: ImageConstant.water,
-  ),
-  SlideCatModal(
-    Name: 'MALA',
-    Image: ImageConstant.mala,
-  ),
-  SlideCatModal(
-    Name: 'Pendant',
-    Image: ImageConstant.pendant,
-  ),
-  SlideCatModal(
-    Name: 'Ring',
-    Image: ImageConstant.ring,
-  ),
-];
