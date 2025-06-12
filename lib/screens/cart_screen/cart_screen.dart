@@ -79,8 +79,8 @@ class _CartScreenState extends State<CartScreen> {
               gradient:
                   LinearGradient(colors: [appTheme.cyan200, appTheme.cyan50])),
           title: 'Shopping Cart',
-          rightBtn: true,
-          rightIconPath: ImageConstant.navCart,
+          // rightBtn: true,
+          // rightIconPath: ImageConstant.navCart,
           showBadge: true,
           badgeCount: badgeCount ?? 0,
         ),

@@ -106,7 +106,7 @@ class _ProductsListScreenState extends State<ProductsListScreen> {
       child: Scaffold(
         backgroundColor: appTheme.whiteA700,
         appBar: CustomAppBar(
-          title: 'Shopping Cart',
+          title: 'Products',
           boxDecoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [appTheme.cyan200, appTheme.cyan50],
@@ -127,45 +127,45 @@ class _ProductsListScreenState extends State<ProductsListScreen> {
               // BottomSheetSortFilterWidget(),
               // BottomSheetFilterWidget(),
               SortFilterWidget(),
-              SizedBox(
-                height: 10,
-              ),
-              Container(
-                padding: EdgeInsets.only(left: 10, right: 10),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      CategoryChip(
-                        'Crazy Deals ',
-                        () {},
-                      ),
-                      CategoryChip(
-                        'Budget Buys ',
-                        () {},
-                      ),
-                      CategoryChip(
-                        'Best Offer ',
-                        () {},
-                      ),
-                      CategoryChip(
-                        'Woman ',
-                        () {},
-                      ),
-                      CategoryChip(
-                        'Crazy Deals ',
-                        () {},
-                      ),
-                      CategoryChip(
-                        'Best Offer ',
-                        () {},
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              // SizedBox(
+              //   height: 10,
+              // ),
+              // Container(
+              //   padding: EdgeInsets.only(left: 10, right: 10),
+              //   child: SingleChildScrollView(
+              //     scrollDirection: Axis.horizontal,
+              //     child: Row(
+              //       crossAxisAlignment: CrossAxisAlignment.start,
+              //       mainAxisAlignment: MainAxisAlignment.start,
+              //       children: [
+              //         CategoryChip(
+              //           'Crazy Deals ',
+              //           () {},
+              //         ),
+              //         CategoryChip(
+              //           'Budget Buys ',
+              //           () {},
+              //         ),
+              //         CategoryChip(
+              //           'Best Offer ',
+              //           () {},
+              //         ),
+              //         CategoryChip(
+              //           'Woman ',
+              //           () {},
+              //         ),
+              //         CategoryChip(
+              //           'Crazy Deals ',
+              //           () {},
+              //         ),
+              //         CategoryChip(
+              //           'Best Offer ',
+              //           () {},
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              // ),
               SizedBox(
                 height: 10,
               ),
