@@ -42,13 +42,13 @@ class _ProductsScreenState extends State<ProductsScreen> {
   _ProductsScreenState(Products? item) {
     products = item!;
   }
-    String currencySymbol = '\₹';
+    String currencySymbol = '₹';
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
        SharedPreferenceHelper sp = SharedPreferenceHelper();
-    currencySymbol = sp.getString('currencySymbol') ?? '\$';
+    currencySymbol = sp.getString('currencySymbol') ?? '₹';
     db = DatabaseHelper();
     wc = WooCommerceApi(WooCommerceApi.createDio());
     fetchProductDetails();
@@ -209,10 +209,10 @@ class _ProductsScreenState extends State<ProductsScreen> {
                           data: rpd.description!,
                         ),
                       ),
-                      Container(
-                        color: appTheme.blueGray50,
-                        height: 5,
-                      ),
+                      // Container(
+                      //   color: appTheme.blueGray50,
+                      //   height: 5,
+                      // ),
                       // product meta data
                       // rpd.metaData!.isNotEmpty
                       //     ? productMetaData()
@@ -249,7 +249,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SizedBox(
-                      width: 180,
+                      width: 210,
                       child: ElevatedButton(
                         style: CustomButtonStyles.fillPrimaryWithotRoundBlack,
                         onPressed: AddTocart,
@@ -258,7 +258,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                       ),
                     ),
                     SizedBox(
-                      width: 180,
+                      width: 210,
                       child: ElevatedButton(
                         style: CustomButtonStyles.fillPrimaryWithotRound,
                         onPressed: buyNow,

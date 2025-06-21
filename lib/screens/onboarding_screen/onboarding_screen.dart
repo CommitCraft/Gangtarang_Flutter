@@ -100,7 +100,7 @@ class _onboardingScreenState extends State<onboardingScreen> {
                         Container(
                           width: double.infinity,
                           height: 400,
-                          child: Image.asset(ImageConstant.onbgImg),
+                          child: Image.asset("assets/images/sivling_onboard.png"),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(

@@ -205,6 +205,7 @@ static String IconCall = '$imagePath/callicon.svg';
 static String IconSaveIcon = '$imagePath/saveIcon.svg'; 
 
 
+static String Sivling='assets/images/sivling_logo.svg';
 
 
 }
