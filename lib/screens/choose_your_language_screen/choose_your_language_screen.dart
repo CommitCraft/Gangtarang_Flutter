@@ -177,22 +177,22 @@ class _ChooseYourLanguageScreenState extends State<ChooseYourLanguageScreen> {
             Divider(color: Color(0xFFDCDCDC)),
 
             // Search bar
-            Container(
-              padding: EdgeInsets.only(top: 16),
-              child: CustomInputField(
-                onChanged: (query) => _filterLanguages(query),
-                hintText: 'Find a language',
-                endIcon: Container(
-                  padding: EdgeInsets.all(15),
-                  child: CustomImageView(
-                    color: theme.primaryColor,
-                    imagePath: ImageConstant.iconSearch,
-                    height: 14,
-                    width: 14,
-                  ),
-                ),
-              ),
-            ),
+            // Container(
+            //   padding: EdgeInsets.only(top: 16),
+            //   child: CustomInputField(
+            //     onChanged: (query) => _filterLanguages(query),
+            //     hintText: 'Find a language',
+            //     endIcon: Container(
+            //       padding: EdgeInsets.all(15),
+            //       child: CustomImageView(
+            //         color: theme.primaryColor,
+            //         imagePath: ImageConstant.iconSearch,
+            //         height: 14,
+            //         width: 14,
+            //       ),
+            //     ),
+            //   ),
+            // ),
 
             // Title Text
             Padding(

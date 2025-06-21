@@ -315,8 +315,12 @@ Widget _buildSearchAndCategories(BuildContext context) {
           padding: EdgeInsets.symmetric(horizontal: 14.h),
           // onDoubleTap in Search View then open Search Screen
           child: CustomSearchView(
+            suffix: SizedBox(),
+            onChanged: (value) {
+              print("${value}");
+            },
             controller: _SearchController,
-            hintText: "Search Best items for You",
+            hintText: "Search Best items for You ",
             contentPadding: EdgeInsets.symmetric(
               horizontal: 12.h,
               vertical: 10.h,

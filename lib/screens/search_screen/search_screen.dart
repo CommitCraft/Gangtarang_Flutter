@@ -135,14 +135,16 @@ class _SearchScreenState extends State<SearchScreen> {
             runSpacing: 8.0, // Adjust spacing between rows as needed
             children: List.generate(
               sizes.length,
-              (index) => CatButton(
-                label: sizes[index],
-                onTap: () {
-                  Navigator.of(context).push(PageRouteBuilder(
-                    pageBuilder: (context, animation, secondaryAnimation) =>
-                        ProductsListScreen(),
-                  ));
-                },
+              (index) => Container(
+                child: CatButton(
+                  label: sizes[index],
+                  onTap: () {
+                    Navigator.of(context).push(PageRouteBuilder(
+                      pageBuilder: (context, animation, secondaryAnimation) =>
+                          ProductsListScreen(),
+                    ));
+                  },
+                ),
               ),
             ),
           ),
@@ -189,7 +191,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   child: CustomInputField(
                     onChanged: (p0) => fetchSearchProduct(p0),
                     width: double.minPositive,
-                    hintText: 'Search Best items for You',
+                    hintText: 'Search Best items for You ',
                     borderDecoration: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8.h),
                       borderSide:
@@ -221,6 +223,7 @@ class _SearchScreenState extends State<SearchScreen> {
             child: Text(
               title,
               style: CustomTextStyles.titleMediumErrorContainer,
+              overflow: TextOverflow.ellipsis,
             ),
           ),
           Container(
@@ -228,6 +231,7 @@ class _SearchScreenState extends State<SearchScreen> {
             child: Text(
               action,
               style: CustomTextStyles.titleSmallPrimary,
+              overflow: TextOverflow.ellipsis,
             ),
           ),
         ],

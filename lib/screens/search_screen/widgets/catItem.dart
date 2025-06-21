@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import '../../../core/app_export.dart';
 
 class CatButton extends StatefulWidget {
-  final String label; // Text label for the item
-  final VoidCallback onTap; // Callback for item click
+  final String label;
+  final VoidCallback onTap;
 
-  CatButton({
+  const CatButton({
     Key? key,
     required this.label,
     required this.onTap,
@@ -17,35 +17,38 @@ class CatButton extends StatefulWidget {
 }
 
 class _CatButtonState extends State<CatButton> {
-  bool selecter = false; // Track selection state
+  bool selecter = false;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        widget.onTap(); // Call the onTap callback passed to the widget
-      }, // Handle item click
+      onTap: widget.onTap,
       child: SizedBox(
-        // width: 60.h,
         child: Column(
           children: [
             Container(
               height: 40.h,
-
-              // padding: EdgeInsets.only(right: 2),
               child: OutlinedButton(
                 onPressed: () {
                   setState(() {
-                    selecter = !selecter; // Toggle the selection state on tap
+                    selecter = !selecter;
                   });
-                  widget
-                      .onTap(); // Call the onTap callback passed to the widget
+                  widget.onTap();
                 },
-                child: Text(
-                  widget.label,
-                  style: CustomTextStyles.titleSmallErrorContainer.copyWith(color: Colors.black ),
+                style: CustomButtonStyles.outlineIndigoTLS.copyWith(
+                  backgroundColor: WidgetStatePropertyAll(Color(0xFFFFFFFF)),
                 ),
-                style:  CustomButtonStyles.outlineIndigoTLS.copyWith(backgroundColor: WidgetStatePropertyAll(Color(0xFFFFFFFF))),
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    widget.label,
+                    style: CustomTextStyles.titleSmallErrorContainer.copyWith(
+                      color: Colors.black,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
               ),
             ),
           ],

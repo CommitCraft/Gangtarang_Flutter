@@ -42,7 +42,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
   _ProductsScreenState(Products? item) {
     products = item!;
   }
-    String currencySymbol = '\$';
+    String currencySymbol = '\₹';
   @override
   void initState() {
     // TODO: implement initState
@@ -214,9 +214,9 @@ class _ProductsScreenState extends State<ProductsScreen> {
                         height: 5,
                       ),
                       // product meta data
-                      rpd.metaData!.isNotEmpty
-                          ? productMetaData()
-                          : Container(),
+                      // rpd.metaData!.isNotEmpty
+                      //     ? productMetaData()
+                      //     : Container(),
                       // reletete products
                       rpd.relatedIds!.isNotEmpty
                           ? Container(

@@ -157,6 +157,7 @@ class _CategoryPageState extends State<CategoryPage> {
           leadingWidth: double.maxFinite,
         ),
         body: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Left Sidebar
             Container(

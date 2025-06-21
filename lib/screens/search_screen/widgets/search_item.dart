@@ -18,9 +18,13 @@ class SearchItemList extends StatelessWidget {
         ),
         Padding(
           padding: EdgeInsets.only(left: 10.h),
-          child: Text(
-            title,
-            style: theme.textTheme.bodyLarge,
+          child: Container(
+            width: 200,
+            child: Text(
+              title,
+              style: theme.textTheme.bodyLarge,
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
         ),
         Spacer(),
